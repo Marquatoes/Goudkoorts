@@ -43,29 +43,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Boat.cs" />
-    <Compile Include="Car.cs" />
-    <Compile Include="Corner.cs" />
-    <Compile Include="Flat.cs" />
-    <Compile Include="Game.cs" />
-    <Compile Include="GameView.cs" />
-    <Compile Include="MovingObject.cs" />
-    <Compile Include="Path.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="Controller\GameController.cs" />
+    <Compile Include="Model\Boat.cs" />
+    <Compile Include="Model\Car.cs" />
+    <Compile Include="Model\Corner.cs" />
+    <Compile Include="Model\Flat.cs" />
+    <Compile Include="Model\Game.cs" />
+    <Compile Include="View\GameView.cs" />
+    <Compile Include="Model\MovingObject.cs" />
+    <Compile Include="Model\Path.cs" />
+    <Compile Include="Model\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Shore.cs" />
-    <Compile Include="StartingPoint.cs" />
-    <Compile Include="Switch.cs" />
-    <Compile Include="SwitchableObject.cs" />
-    <Compile Include="Terrain.cs" />
-    <Compile Include="Track.cs" />
-    <Compile Include="Water.cs" />
-    <Compile Include="Yard.cs" />
+    <Compile Include="Model\Shore.cs" />
+    <Compile Include="Model\StartingPoint.cs" />
+    <Compile Include="Model\Switch.cs" />
+    <Compile Include="Model\Terrain.cs" />
+    <Compile Include="Model\Track.cs" />
+    <Compile Include="Model\Water.cs" />
+    <Compile Include="Model\Yard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Maps\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

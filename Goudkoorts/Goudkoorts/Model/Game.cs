@@ -22,13 +22,5 @@ namespace Goudkoorts
             {
             }
         }
-
-        public GameView GameView
-        {
-            get => default(GameView);
-            set
-            {
-            }
-        }
     }
 }
