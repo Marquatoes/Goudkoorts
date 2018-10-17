@@ -5,13 +5,9 @@ using System.Text;
 
 namespace Goudkoorts
 {
-    public class Parser
+    public static class Parser
     {
-        public Parser()
-        {
-
-        }
-        public List<List<char>> GetLevel(int level)
+        public static List<List<char>> GetLevel(int level)
         {
             List<List<char>> levelLayout = new List<List<char>>();
             string[] allLevelRows = System.IO.File.ReadAllLines(@"..\..\Maps\level" + level + ".txt");

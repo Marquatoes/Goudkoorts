@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace Goudkoorts.Controller
 {
-    class GameController
+    public class GameController
     {
+        private Game _observable;
+        private GameView _observer;
+
+        public GameController(Game g)
+        {
+            _observable = g;
+            _observer = new GameView(this);
+            _observable.Event += _observer.Update;
+        }
     }
 }

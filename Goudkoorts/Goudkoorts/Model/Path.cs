@@ -7,7 +7,7 @@ namespace Goudkoorts
 {
     public class Path
     {
-        private List<List<ImmovableObject>> _layout;
+        public ImmovableObject First;
         private List<ImmovableObject> _startingPoints;
         private List<ImmovableObject> _switches;
         public ImmovableObject ImmovableObject
@@ -21,20 +21,21 @@ namespace Goudkoorts
         {
             _startingPoints = new List<ImmovableObject>();
             _switches = new List<ImmovableObject>();
-            _layout = new List<List<ImmovableObject>>();
         }
 
-        internal void setPath(List<List<char>> levelLayout)
-        {         
+        internal void SetPath(List<List<char>> levelLayout)
+        {
+            List<List<ImmovableObject>> layout = new List<List<ImmovableObject>>();
             for (int i = 0; i < levelLayout.Count; i++)
             {
-                _layout.Add(new List<ImmovableObject>());
+                List<ImmovableObject> rowList = new List<ImmovableObject>();
                 for (int j = 0; j < levelLayout[i].Count; j++)
                 {
-                    AddObject(levelLayout[i][j], i);
+                    rowList.Add(GetObject(levelLayout[i][j], i));
                 }
+                layout.Add(rowList);
             }
-            LinkField();
+            LinkField(layout);
         }
 
         internal void PlaceCar()
@@ -44,66 +45,62 @@ namespace Goudkoorts
             _startingPoints[placement].setUsedBy(new Car());
         }
 
-        private void AddObject(char type, int row)
+        private ImmovableObject GetObject(char type, int row)
         {
-            ImmovableObject immovableObject;
+            ImmovableObject immovableObject = null;
             switch (type)
             {            
                 case '-':
                     immovableObject = new Flat();
-                    _layout[row].Add(immovableObject);
                     break;
                 case 'S':
                     immovableObject = new StartingPoint();
-                    _layout[row].Add(immovableObject);
                     _startingPoints.Add(immovableObject);
                     break;
                 case '#':
                     immovableObject = new Switch();
-                    _layout[row].Add(immovableObject);
                     _switches.Add(immovableObject);
                     break;
                 case 'Y':
                     immovableObject = new Yard();
-                    _layout[row].Add(immovableObject);
                     break;
                 case 'D':
-                    immovableObject = new Shore();
-                    _layout[row].Add(immovableObject);
+                    immovableObject = new Dock();
                     break;
                 case ' ':
                     immovableObject = new Empty();
-                    _layout[row].Add(immovableObject);
                     break;
-            } 
+            }
+            return immovableObject ?? null;
         }
-        private void LinkField()
+        private void LinkField(List<List<ImmovableObject>> layout)
         {
-            for (int i = 0; i < _layout.Count; i++)
+            First = layout[0][0];
+            for (int i = 0; i < layout.Count; i++)
             {
-                for (int j = 0; j < _layout[i].Count; j++)
+                for (int j = 0; j < layout[i].Count; j++)
                 {
-                    if (i != 0 && _layout[i - 1].Count > j && _layout[i - 1][j] != null)
+                    if (i != 0 && layout[i - 1].Count > j && layout[i - 1][j] != null)
                     {
-                        _layout[i][j].Up = _layout[i - 1][j];
+                        layout[i][j].Up = layout[i - 1][j];
                     }
-                    if (i != _layout.Count - 1 && _layout[i + 1].Count > j && _layout[i + 1][j] != null)
+                    if (i != layout.Count - 1 && layout[i + 1].Count > j && layout[i + 1][j] != null)
                     {
-                        _layout[i][j].Down = _layout[i + 1][j];
+                        layout[i][j].Down = layout[i + 1][j];
                     }
-                    if (j < _layout[i].Count - 1)
+                    if (j < layout[i].Count - 1)
                     {
-                        _layout[i][j].Right = _layout[i][j + 1];
+                        layout[i][j].Right = layout[i][j + 1];
                     }
                     if (j > 0)
                     {
-                        _layout[i][j].Left = _layout[i][j - 1];
+                        layout[i][j].Left = layout[i][j - 1];
                     }
                 }
 
             }
         }
-        public void ShowField()
+        /*public void ShowField()
         {
             Console.Clear();
             for (ImmovableObject first = _layout[0][0]; first != null; first = first.Down)
@@ -125,7 +122,7 @@ namespace Goudkoorts
                         else
                             Console.Write('S');
                     }
-                    else if (firstToRight is Shore)
+                    else if (firstToRight is Dock)
                     {
                         Console.Write('D');
                     }
@@ -137,6 +134,6 @@ namespace Goudkoorts
                 Console.WriteLine();
             }
             Console.ReadKey();
-        }
+        }*/
     }
 }  

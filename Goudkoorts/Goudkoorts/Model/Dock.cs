@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Goudkoorts
 {
-    public class Shore : ImmovableObject
+    public class Dock : ImmovableObject
     {
     }
 }
