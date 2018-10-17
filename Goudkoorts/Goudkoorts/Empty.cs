@@ -5,11 +5,7 @@ using System.Text;
 
 namespace Goudkoorts
 {
-    public class StartingPoint : Track
+    public class Empty : ImmovableObject
     {
-        public StartingPoint() : base()
-        {
-
-        }
     }
 }

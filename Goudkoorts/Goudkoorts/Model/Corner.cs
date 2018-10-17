@@ -7,7 +7,7 @@ namespace Goudkoorts
 {
     public class Corner : Track
     {
-        public Corner(MovingObject m) : base(m)
+        public Corner() : base()
         {
 
         }

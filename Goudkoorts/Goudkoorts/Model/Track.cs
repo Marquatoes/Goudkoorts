@@ -7,7 +7,7 @@ namespace Goudkoorts
 {
     public class Track : ImmovableObject
     {
-        public Track(MovingObject m) : base()
+        public Track() : base()
         {
 
         }

@@ -44,11 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\GameController.cs" />
+    <Compile Include="Empty.cs" />
     <Compile Include="Model\Boat.cs" />
     <Compile Include="Model\Car.cs" />
     <Compile Include="Model\Corner.cs" />
     <Compile Include="Model\Flat.cs" />
     <Compile Include="Model\Game.cs" />
+    <Compile Include="Parser.cs" />
     <Compile Include="View\GameView.cs" />
     <Compile Include="Model\MovingObject.cs" />
     <Compile Include="Model\Path.cs" />
@@ -58,7 +60,7 @@
     <Compile Include="Model\Shore.cs" />
     <Compile Include="Model\StartingPoint.cs" />
     <Compile Include="Model\Switch.cs" />
-    <Compile Include="Model\Terrain.cs" />
+    <Compile Include="Model\ImmovableObject.cs" />
     <Compile Include="Model\Track.cs" />
     <Compile Include="Model\Water.cs" />
     <Compile Include="Model\Yard.cs" />

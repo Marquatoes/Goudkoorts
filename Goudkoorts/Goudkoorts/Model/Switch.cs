@@ -7,7 +7,7 @@ namespace Goudkoorts
 {
     public class Switch : Track
     {
-        public Switch(MovingObject m) : base(m)
+        public Switch() : base()
         {
 
         }

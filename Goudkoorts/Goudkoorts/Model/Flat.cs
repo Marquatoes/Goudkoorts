@@ -7,7 +7,7 @@ namespace Goudkoorts
 {
     public class Flat : Track
     {
-        public Flat(MovingObject m) : base(m)
+        public Flat() : base()
         {
 
         }

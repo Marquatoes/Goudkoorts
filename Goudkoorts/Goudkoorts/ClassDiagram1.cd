@@ -29,16 +29,16 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Goudkoorts.Water">
-    <Position X="9.75" Y="6.25" Width="1.5" />
+    <Position X="9.75" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Water.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Goudkoorts.ImmovableObject">
-    <Position X="9.75" Y="4.5" Width="1.5" />
+    <Position X="10.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAIAAAAAEAAAAAAAAAAAAAAAAAAACACAAAAAAAI=</HashCode>
       <FileName>Model\Terrain.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -46,9 +46,9 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Goudkoorts.Path">
-    <Position X="9.75" Y="3" Width="1.5" />
+    <Position X="10" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <HashCode>AAAAAAQAAIAAAAAAAAAAAAAgBACAACAAIAAAAAAAQAA=</HashCode>
       <FileName>Model\Path.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -58,12 +58,13 @@
   <Class Name="Goudkoorts.Game">
     <Position X="6" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <HashCode>AAAgAAAAACAAAAIAAAAAAAAAAAAAAAAAAAAAAQAAIAA=</HashCode>
       <FileName>Model\Game.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Path" />
       <Property Name="Player" />
+      <Property Name="Parser" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Goudkoorts.Player">
@@ -74,14 +75,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Goudkoorts.Shore">
-    <Position X="11.5" Y="6.25" Width="1.5" />
+    <Position X="11.5" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Shore.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Goudkoorts.Yard">
-    <Position X="13.25" Y="6.25" Width="1.5" />
+    <Position X="13.25" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Yard.cs</FileName>
@@ -120,6 +121,20 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\StartingPoint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Goudkoorts.Parser">
+    <Position X="3.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Parser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Goudkoorts.Empty">
+    <Position X="14.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Empty.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
