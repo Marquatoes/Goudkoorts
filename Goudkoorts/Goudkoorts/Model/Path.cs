@@ -10,6 +10,7 @@ namespace Goudkoorts
         public ImmovableObject First;
         private List<ImmovableObject> _startingPoints;
         private List<ImmovableObject> _switches;
+        private List<MovingObject> _carts;
         public ImmovableObject ImmovableObject
         {
             get => default(ImmovableObject);
@@ -21,6 +22,7 @@ namespace Goudkoorts
         {
             _startingPoints = new List<ImmovableObject>();
             _switches = new List<ImmovableObject>();
+            _carts = new List<MovingObject>();
         }
 
         internal void SetPath(List<List<char>> levelLayout)
@@ -36,13 +38,32 @@ namespace Goudkoorts
                 layout.Add(rowList);
             }
             LinkField(layout);
+            foreach(Switch s in _switches)
+            {
+                s.SetLaneDirection(s.Up);
+            }
+            
         }
 
-        internal void PlaceCar()
+        internal void PlaceCart()
         {
             Random random = new Random();
             int placement = random.Next(0, _startingPoints.Count);
-            _startingPoints[placement].setUsedBy(new Car());
+            MovingObject cart = new Cart(_startingPoints[placement]);
+            _startingPoints[placement].setUsedBy(cart);
+            _carts.Add(cart);
+            
+        }
+        public void MoveAllCarts()
+        {
+            foreach(MovingObject c in _carts)
+            {
+                c.Move();
+            }
+            foreach(MovingObject c in _carts)
+            {
+                c.resetMove(); 
+            }
         }
 
         private ImmovableObject GetObject(char type, int row)
@@ -100,15 +121,21 @@ namespace Goudkoorts
 
             }
         }
-        /*public void ShowField()
+
+        public void ShowField()
         {
             Console.Clear();
-            for (ImmovableObject first = _layout[0][0]; first != null; first = first.Down)
+            for (ImmovableObject first = First; first != null; first = first.Down)
             {
                 for (ImmovableObject firstToRight = first; firstToRight != null; firstToRight = firstToRight.Right)
                 {
                     if (firstToRight is Flat)
-                        Console.Write('-');
+                    {
+                        if (firstToRight.InUseBy() is Cart)
+                            Console.Write('C');
+                        else
+                            Console.Write('-');
+                    }
                     else if(firstToRight is Yard)
                         Console.Write('Y');
                     else if(firstToRight is Empty)
@@ -117,7 +144,7 @@ namespace Goudkoorts
                     }
                     else if (firstToRight is StartingPoint)
                     {
-                        if (firstToRight.InUseBy() is Car)
+                        if (firstToRight.InUseBy() is Cart)
                             Console.Write('C');
                         else
                             Console.Write('S');
@@ -128,12 +155,14 @@ namespace Goudkoorts
                     }
                     else if (firstToRight is Switch)
                     {
-                        Console.Write('#');
+                        if (firstToRight.InUseBy() is Cart)
+                            Console.Write('C');
+                        else
+                            Console.Write('#');
                     }
                 }
                 Console.WriteLine();
             }
-            Console.ReadKey();
-        }*/
+        }
     }
 }  

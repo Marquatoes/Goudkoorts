@@ -11,5 +11,15 @@ namespace Goudkoorts
         {
 
         }
+
+        public override bool CanBePlaced()
+        {
+            return true;
+        }
+        public override void SetMovingObject(MovingObject movingObject)
+        {
+
+        }
+        
     }
 }

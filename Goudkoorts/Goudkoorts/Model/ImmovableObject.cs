@@ -25,5 +25,8 @@ namespace Goudkoorts
         {
             this.inUseBy = m;
         }
+
+        public abstract void SetMovingObject(MovingObject movingObject);
+        public abstract bool CanBePlaced();
     }
 }

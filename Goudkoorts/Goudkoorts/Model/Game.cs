@@ -20,16 +20,41 @@ namespace Goudkoorts
         public Game()
         {
             _path = new Path();
+            Start();
         }
         public void Start()
         {
             _path.SetPath(Parser.GetLevel(1));
-            Notify();
-            
+            PlaceCar();
+            _path.ShowField();
+            System.Threading.Thread.Sleep(3000);
+            _path.MoveAllCarts();
+            _path.ShowField();
+            System.Threading.Thread.Sleep(3000);
+            PlaceCar();
+            _path.ShowField();
+            System.Threading.Thread.Sleep(3000);
+            _path.MoveAllCarts();
+            _path.ShowField();
+            System.Threading.Thread.Sleep(3000);
+            PlaceCar();
+            _path.ShowField();
+            System.Threading.Thread.Sleep(3000);
+            _path.MoveAllCarts();
+            _path.ShowField();
+            System.Threading.Thread.Sleep(3000);
+            PlaceCar();
+            _path.ShowField();
+            System.Threading.Thread.Sleep(3000);
+            _path.MoveAllCarts();
+            _path.ShowField();
+            System.Threading.Thread.Sleep(3000);
+
+
         }
         public void PlaceCar()
         {
-            _path.PlaceCar();
+            _path.PlaceCart();
         }
 
         #region Observable stuff
