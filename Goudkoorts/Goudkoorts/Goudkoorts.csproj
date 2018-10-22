@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\GameController.cs" />
+    <Compile Include="Model\DoubleEntranceSwitch.cs" />
+    <Compile Include="Model\DoubleExitSwitch.cs" />
     <Compile Include="Model\Empty.cs" />
     <Compile Include="Model\Boat.cs" />
     <Compile Include="Model\Cart.cs" />
