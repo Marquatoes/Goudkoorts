@@ -67,7 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ClassDiagram1.cd" />
+    <None Include="Model\ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Maps\level1.txt" />

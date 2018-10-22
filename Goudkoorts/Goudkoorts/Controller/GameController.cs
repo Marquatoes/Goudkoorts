@@ -17,5 +17,10 @@ namespace Goudkoorts.Controller
             _observer = new GameView(this);
             _observable.Event += _observer.Update;
         }
+
+        public ImmovableObject GetPathFirst()
+        {
+            return _observable.GetPathFirst();
+        }
     }
 }

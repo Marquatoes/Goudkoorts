@@ -25,34 +25,40 @@ namespace Goudkoorts
         public void Start()
         {
             _path.SetPath(Parser.GetLevel(1));
-            PlaceCar();
+            /*PlaceCart();
             _path.ShowField();
             System.Threading.Thread.Sleep(3000);
             _path.MoveAllCarts();
             _path.ShowField();
             System.Threading.Thread.Sleep(3000);
-            PlaceCar();
+            PlaceCart();
             _path.ShowField();
             System.Threading.Thread.Sleep(3000);
             _path.MoveAllCarts();
             _path.ShowField();
             System.Threading.Thread.Sleep(3000);
-            PlaceCar();
+            PlaceCart();
             _path.ShowField();
             System.Threading.Thread.Sleep(3000);
             _path.MoveAllCarts();
             _path.ShowField();
             System.Threading.Thread.Sleep(3000);
-            PlaceCar();
+            PlaceCart();
             _path.ShowField();
             System.Threading.Thread.Sleep(3000);
             _path.MoveAllCarts();
             _path.ShowField();
             System.Threading.Thread.Sleep(3000);
-
-
+            */
+            Notify();
         }
-        public void PlaceCar()
+
+        internal ImmovableObject GetPathFirst()
+        {
+            return _path.GetFirst();
+        }
+
+        public void PlaceCart()
         {
             _path.PlaceCart();
         }
@@ -62,8 +68,10 @@ namespace Goudkoorts
 
         public void Notify()
         {
-            UpdateEventArgs args = new UpdateEventArgs();
-            args.FieldChanged = true;
+            UpdateEventArgs args = new UpdateEventArgs
+            {
+                FieldChanged = true
+            };
             Event?.Invoke(this, args);
         }
 

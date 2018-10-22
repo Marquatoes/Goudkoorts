@@ -5,16 +5,11 @@ using System.Text;
 
 namespace Goudkoorts
 {
-    public class Yard : ImmovableObject
+    public class Yard : Track
     {
         public override bool CanBePlaced()
         {
             return true;
-        }
-
-        public override void SetMovingObject(MovingObject movingObject)
-        {
-            
         }
     }
 }

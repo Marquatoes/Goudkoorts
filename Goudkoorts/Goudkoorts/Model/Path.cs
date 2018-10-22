@@ -11,6 +11,7 @@ namespace Goudkoorts
         private List<ImmovableObject> _startingPoints;
         private List<ImmovableObject> _switches;
         private List<MovingObject> _carts;
+
         public ImmovableObject ImmovableObject
         {
             get => default(ImmovableObject);
@@ -54,6 +55,12 @@ namespace Goudkoorts
             _carts.Add(cart);
             
         }
+
+        internal ImmovableObject GetFirst()
+        {
+            return First;
+        }
+
         public void MoveAllCarts()
         {
             foreach(MovingObject c in _carts)

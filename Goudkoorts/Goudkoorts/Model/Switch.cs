@@ -40,5 +40,6 @@ namespace Goudkoorts
             this.lane = i;
         }
 
+        public ImmovableObject Lane { get { return this.lane; } }
     }
 }
