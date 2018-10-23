@@ -9,6 +9,7 @@ namespace Goudkoorts
     public class Cart : MovingObject
     {
         private bool _isFull;
+        private bool _crashed;
         public Cart(ImmovableObject i) : base(i)
         {
             this.currentPosition = i;
@@ -20,6 +21,7 @@ namespace Goudkoorts
         {
             if (_moved)
             {
+                _crashed = true;
                 return;
             }
 
@@ -50,9 +52,18 @@ namespace Goudkoorts
             _moved = true;
         }
 
-        public void Unload()
-        {
+        public bool Unload()
+        {    
+            if(_isFull == false)
+            {
+                return false;
+            }
             _isFull = false;
-        }      
+            return true;
+        }
+        public override bool crashed()
+        {
+            return this._crashed;
+        }
     }
 }

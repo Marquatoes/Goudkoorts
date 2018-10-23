@@ -9,12 +9,15 @@ namespace Goudkoorts
     {
         public override bool CanBePlaced()
         {
-            throw new NotImplementedException();
+            return canBePlaced;
         }
 
         public override void SetMovingObject(MovingObject movingObject)
         {
-            throw new NotImplementedException();
+            if(movingObject is Boat)
+            {
+                this.inUseBy = movingObject;
+            }
         }
     }
 }

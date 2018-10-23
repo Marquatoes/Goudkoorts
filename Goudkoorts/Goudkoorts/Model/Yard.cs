@@ -7,9 +7,21 @@ namespace Goudkoorts
 {
     public class Yard : Track
     {
-        public override bool CanBePlaced()
+       public Yard()
+       {
+            this.canBePlaced = true;
+       }
+        public override void SetMovingObject(MovingObject movingObject)
         {
-            return true;
+            if(this.inUseBy == null)
+            {
+                this.inUseBy = movingObject;
+            }
+            else
+            {
+                inUseBy.Move();
+                this.inUseBy = movingObject;
+            }
         }
     }
 }
