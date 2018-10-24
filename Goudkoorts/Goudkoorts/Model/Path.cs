@@ -67,10 +67,6 @@ namespace Goudkoorts
             {
                 c.Move();
             }
-            foreach(MovingObject c in _carts)
-            {
-                c.resetMove(); 
-            }
         }
 
         private ImmovableObject GetObject(char type, int row)

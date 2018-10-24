@@ -28,8 +28,18 @@ namespace Goudkoorts
                     for (var cell = row; cell != null; cell = cell.Right)
                     {
                         cellindex++;
-
-                        if (cell is Track)
+                        if(cell.InUseBy() != null)
+                        {
+                            if(cell.InUseBy() is Cart fullCart && fullCart.IsFull)
+                            {
+                                Console.Write("Ü");
+                            }
+                            else if (cell.InUseBy() is Cart emptyCart && !emptyCart.IsFull)
+                            {
+                                Console.Write("U");
+                            }
+                        }
+                        else if (cell is Track)
                         {
                             if(cell is Yard)
                             {
@@ -89,8 +99,6 @@ namespace Goudkoorts
                     Console.WriteLine();
                 }
             }
-
-            Console.ReadLine();
         }
 
         private bool IsNullOrEmpty(ImmovableObject c)

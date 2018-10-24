@@ -16,6 +16,11 @@ namespace Goudkoorts
             _isFull = true;
         }
 
+        public bool IsFull
+        {
+            get { return _isFull; }
+        }
+
         public override void Move()
         {
             if (_moved)
