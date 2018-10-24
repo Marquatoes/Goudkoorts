@@ -17,6 +17,18 @@ namespace Goudkoorts
             }
         }
 
+        public bool BoatIsAtDock
+        {
+            get
+            {
+                return false;
+            }
+            set
+            {
+
+            }
+        }
+
         public Game()
         {
             _path = new Path();
@@ -24,39 +36,46 @@ namespace Goudkoorts
         public void Start()
         {
             _path.SetPath(Parser.GetLevel(1));
-            PlaceCart();
+            //PlaceCart();
             //_path.ShowField();
-            Notify();
+            //Notify();
             //System.Threading.Thread.Sleep(3000);
-            _path.MoveAllCarts();
+            //_path.MoveAllCarts();
             //_path.ShowField();
-            Notify();
-            System.Threading.Thread.Sleep(3000);
-            PlaceCart();
+            //Notify();
+            //System.Threading.Thread.Sleep(3000);
+            //PlaceCart();
             //_path.ShowField();
-            Notify();
-            System.Threading.Thread.Sleep(3000);
-            _path.MoveAllCarts();
+            //Notify();
+            //System.Threading.Thread.Sleep(3000);
+            //_path.MoveAllCarts();
             //_path.ShowField();
-            Notify();
-            System.Threading.Thread.Sleep(3000);
-            PlaceCart();
+            //Notify();
+            //System.Threading.Thread.Sleep(3000);
+            //PlaceCart();
             //_path.ShowField();
-            Notify();
-            System.Threading.Thread.Sleep(3000);
-            _path.MoveAllCarts();
+            //Notify();
+            //System.Threading.Thread.Sleep(3000);
+            //_path.MoveAllCarts();
             //_path.ShowField();
-            Notify();
-            System.Threading.Thread.Sleep(3000);
-            PlaceCart();
+            //Notify();
+            //System.Threading.Thread.Sleep(3000);
+            //PlaceCart();
             //_path.ShowField();
-            System.Threading.Thread.Sleep(3000);
-            _path.MoveAllCarts();
+            //System.Threading.Thread.Sleep(3000);
+            //_path.MoveAllCarts();
             //_path.ShowField();
+            //Notify();
+            //System.Threading.Thread.Sleep(3000);
+
+            Test();
+        }
+
+        private void Test()
+        {
             Notify();
-            System.Threading.Thread.Sleep(3000);
-            
-            Notify();
+            Console.ReadLine();
+            Test();
         }
 
         internal ImmovableObject GetPathFirst()
@@ -70,26 +89,12 @@ namespace Goudkoorts
         }
 
         #region Observable stuff
-        public event EventHandler<UpdateEventArgs> Event;
+        public event EventHandler<EventArgs> Event;
 
         public void Notify()
         {
-            UpdateEventArgs args = new UpdateEventArgs
-            {
-                FieldChanged = true
-            };
+            EventArgs args = new EventArgs();
             Event?.Invoke(this, args);
-        }
-
-        public void Notify(UpdateEventArgs args)
-        {
-            Event?.Invoke(this, args);
-        }
-
-        public class UpdateEventArgs : EventArgs
-        {
-            public bool FieldChanged { get; set; }
-            public bool SwitchChanged { get; set; }
         }
         #endregion
     }

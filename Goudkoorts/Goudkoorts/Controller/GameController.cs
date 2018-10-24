@@ -22,5 +22,11 @@ namespace Goudkoorts.Controller
         {
             return _observable.GetPathFirst();
         }
+
+        internal bool BoatIsAtDock
+        {
+            get { return _observable.BoatIsAtDock; }
+            set { _observable.BoatIsAtDock = value; }
+        }
     }
 }
