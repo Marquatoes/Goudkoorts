@@ -9,12 +9,16 @@ namespace Goudkoorts
     {
         public Track() : base()
         {
-
+            canBePlaced = true;
         }
 
         public override bool CanBePlaced()
         {
-            return true;
+            return canBePlaced;
+        }
+        public override void setCanBePlaced(bool canBePlaced)
+        {
+            this.canBePlaced = canBePlaced;
         }
         public override void SetMovingObject(MovingObject movingObject)
         {

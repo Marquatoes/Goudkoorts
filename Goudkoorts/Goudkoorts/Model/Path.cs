@@ -61,12 +61,21 @@ namespace Goudkoorts
             return First;
         }
 
-        public void MoveAllCarts()
+        public bool MoveAllCarts()
         {
             foreach(MovingObject c in _carts)
             {
                 c.Move();
+                if(c.crashed())
+                {
+                    return false;
+                }
             }
+            foreach(MovingObject c in _carts)
+            {
+                c.resetMove(); 
+            }
+            return true;
         }
 
         private ImmovableObject GetObject(char type, int row)
@@ -81,8 +90,12 @@ namespace Goudkoorts
                     immovableObject = new StartingPoint();
                     _startingPoints.Add(immovableObject);
                     break;
-                case '#':
-                    immovableObject = new Switch();
+                case 'E':
+                    immovableObject = new DoubleEntranceSwitch();
+                    _switches.Add(immovableObject);
+                    break;
+                case 'X':
+                    immovableObject = new DoubleExitSwitch();
                     _switches.Add(immovableObject);
                     break;
                 case 'Y':

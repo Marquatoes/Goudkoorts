@@ -36,46 +36,20 @@ namespace Goudkoorts
         public void Start()
         {
             _path.SetPath(Parser.GetLevel(1));
-            //PlaceCart();
-            //_path.ShowField();
-            //Notify();
-            //System.Threading.Thread.Sleep(3000);
-            //_path.MoveAllCarts();
-            //_path.ShowField();
-            //Notify();
-            //System.Threading.Thread.Sleep(3000);
-            //PlaceCart();
-            //_path.ShowField();
-            //Notify();
-            //System.Threading.Thread.Sleep(3000);
-            //_path.MoveAllCarts();
-            //_path.ShowField();
-            //Notify();
-            //System.Threading.Thread.Sleep(3000);
-            //PlaceCart();
-            //_path.ShowField();
-            //Notify();
-            //System.Threading.Thread.Sleep(3000);
-            //_path.MoveAllCarts();
-            //_path.ShowField();
-            //Notify();
-            //System.Threading.Thread.Sleep(3000);
-            //PlaceCart();
-            //_path.ShowField();
-            //System.Threading.Thread.Sleep(3000);
-            //_path.MoveAllCarts();
-            //_path.ShowField();
-            //Notify();
-            //System.Threading.Thread.Sleep(3000);
-
-            Test();
-        }
-
-        private void Test()
-        {
-            Notify();
-            Console.ReadLine();
-            Test();
+            for (int i = 0; i < 10; i++)
+            {
+                PlaceCart();
+                _path.ShowField();
+                System.Threading.Thread.Sleep(3000);
+                if(!_path.MoveAllCarts())
+                {
+                    //Show GameOver Screen.
+                }
+                _path.ShowField();
+                System.Threading.Thread.Sleep(3000);
+                Notify();
+            }            
+            
         }
 
         internal ImmovableObject GetPathFirst()

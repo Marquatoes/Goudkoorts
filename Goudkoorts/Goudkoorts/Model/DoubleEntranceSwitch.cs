@@ -5,24 +5,21 @@ using System.Text;
 
 namespace Goudkoorts
 {
-    public class Flat : Track
+    public class DoubleEntranceSwitch : Switch
     {
-        public Flat() : base()
+        public DoubleEntranceSwitch()
         {
-            this.canBePlaced = true;
+            
         }
-        public override bool CanBePlaced()
-        { 
-            return this.canBePlaced;
-        }
+
         public override void SetMovingObject(MovingObject movingObject)
         {
-            if (this.inUseBy == null)
+            if (this.inUseBy == null && movingObject.currentPosition == this.lane)
             {
                 movingObject.currentPosition.setUsedBy(null);
                 setUsedBy(movingObject);
             }
-            else
+            else if (inUseBy != null)
             {
                 inUseBy.Move();
             }

@@ -23,5 +23,9 @@ namespace Goudkoorts
         {
             _moved = false;
         }
+        public virtual bool crashed()
+        {
+            return false;
+        }
     }
 }
