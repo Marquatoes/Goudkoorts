@@ -1,28 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Goudkoorts
+﻿namespace Goudkoorts
 {
     public class DoubleEntranceSwitch : Switch
     {
-        public DoubleEntranceSwitch()
+        public DoubleEntranceSwitch() { }
+
+        public override void SwitchLane()
         {
-            
+            if (_lane == Up)
+            {
+                _lane = Down;
+            }
+            else
+            {
+                _lane = Up;
+            }
         }
 
-        public override void SetMovingObject(MovingObject movingObject)
+        public override bool SetMovingObject(MovingObject movingObject)
         {
-            if (this.inUseBy == null && movingObject.currentPosition == this.lane)
+            if (inUseBy == null && movingObject.CurrentPosition == _lane)
             {
-                movingObject.currentPosition.setUsedBy(null);
-                setUsedBy(movingObject);
+                movingObject.CurrentPosition.SetUsedBy(null);
+                SetUsedBy(movingObject);
+                return true;
             }
             else if (inUseBy != null)
-            {
-                inUseBy.Move();
-            }
+                return inUseBy.Move();
+            return false;
         }
     }
 }

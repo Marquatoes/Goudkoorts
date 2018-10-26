@@ -3,35 +3,35 @@
   <Class Name="Goudkoorts.Game">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <NestedTypes>
-      <Class Name="Goudkoorts.Game.UpdateEventArgs" Collapsed="true">
+      <Class Name="Goudkoorts.Game.NotifyEventArgs" Collapsed="true">
         <TypeIdentifier>
           <NewMemberFileName>Model\Game.cs</NewMemberFileName>
         </TypeIdentifier>
       </Class>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACACEAAAAAAIAAAAAgAAAABAAAAAAQAAAAA=</HashCode>
+      <HashCode>AAAAAAAAACACEAAAAAAAAAAABgAGAABAAAAAgQIAAAA=</HashCode>
       <FileName>Model\Game.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Goudkoorts.Path">
     <Position X="2.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAQAAMAAIQAAAgAIAAAAAACAIAAAIAAAAQAAQAA=</HashCode>
+      <HashCode>AAAAAAQIAMAAIQoAAgCIAAACAACEIAABIAgAAAIAAAA=</HashCode>
       <FileName>Model\Path.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Goudkoorts.ImmovableObject">
     <Position X="4.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAIRAAACEAAAAAAAAAAAAAAAAAAAGACAAAAAAAI=</HashCode>
+      <HashCode>AAAAAAIRAAACEAAAAAEAAAAAAAAAAAAgCACAABAAAAI=</HashCode>
       <FileName>Model\ImmovableObject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Goudkoorts.Track">
     <Position X="7" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAABAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Track.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -45,14 +45,14 @@
   <Class Name="Goudkoorts.Yard">
     <Position X="10.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Yard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Goudkoorts.Dock">
     <Position X="10.75" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAABAAACAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Dock.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -66,21 +66,21 @@
   <Class Name="Goudkoorts.Switch">
     <Position X="7.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACAABAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAEAABA=</HashCode>
+      <HashCode>AAAACAABAAAAAAAAAAABAAAAAAAAAAAAAQAAAAAAABA=</HashCode>
       <FileName>Model\Switch.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Goudkoorts.DoubleEntranceSwitch">
-    <Position X="11" Y="6.25" Width="1.5" />
+    <Position X="10.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAACAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\DoubleEntranceSwitch.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Goudkoorts.DoubleExitSwitch">
-    <Position X="11" Y="7.75" Width="1.5" />
+    <Position X="10.75" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAACAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
       <FileName>Model\DoubleExitSwitch.cs</FileName>
     </TypeIdentifier>
   </Class>

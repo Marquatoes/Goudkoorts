@@ -1,30 +1,49 @@
-﻿using System;
+﻿using Goudkoorts.Model;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Goudkoorts
 {
     public class Path
     {
-        public ImmovableObject First;
-        private List<ImmovableObject> _startingPoints;
-        private List<ImmovableObject> _switches;
-        private List<MovingObject> _carts;
-
-        public ImmovableObject ImmovableObject
+        public ImmovableObject First { get; private set; }
+        public int Score { get; set; }
+        public bool BoatIsDocked { get { return _dock.BoatIsDocked; } }
+        private int _BoatLocation;
+        public int BoatLocation
         {
-            get => default(ImmovableObject);
+            get { return _BoatLocation; }
             set
             {
+                _BoatLocation = value;
+                _BoatLocation = _BoatLocation == 31 ? 0 : _BoatLocation;
             }
         }
+
+        private List<StartingPoint> _startingPoints;
+        private List<Switch> _switches;
+        private List<Cart> _carts;
+        private Dock _dock;
+
         public Path()
         {
-            _startingPoints = new List<ImmovableObject>();
-            _switches = new List<ImmovableObject>();
-            _carts = new List<MovingObject>();
+            _startingPoints = new List<StartingPoint>();
+            _switches = new List<Switch>();
+            _carts = new List<Cart>();
         }
+
+        internal void AddScore()
+        {
+            Score += 100;
+            if (BoatLocation <= 14)
+            {
+                BoatLocation++;
+                if (BoatLocation == 24)
+                    _dock.BoatIsDocked = false;
+            }
+        }
+
+        internal void DockBoat() => _dock.BoatIsDocked = true;
 
         internal void SetPath(List<List<char>> levelLayout)
         {
@@ -33,76 +52,73 @@ namespace Goudkoorts
             {
                 List<ImmovableObject> rowList = new List<ImmovableObject>();
                 for (int j = 0; j < levelLayout[i].Count; j++)
-                {
                     rowList.Add(GetObject(levelLayout[i][j], i));
-                }
                 layout.Add(rowList);
             }
             LinkField(layout);
-            foreach(Switch s in _switches)
-            {
+            foreach (Switch s in _switches)
                 s.SetLaneDirection(s.Up);
-            }
-            
         }
 
         internal void PlaceCart()
         {
             Random random = new Random();
             int placement = random.Next(0, _startingPoints.Count);
-            MovingObject cart = new Cart(_startingPoints[placement]);
-            _startingPoints[placement].setUsedBy(cart);
+            Cart cart = new Cart(_startingPoints[placement]);
+            _startingPoints[placement].SetUsedBy(cart);
             _carts.Add(cart);
-            
         }
 
-        internal ImmovableObject GetFirst()
-        {
-            return First;
-        }
+        public int DebugCartAmount { get { return _carts.Count; } }
 
         public bool MoveAllCarts()
         {
-            foreach(MovingObject c in _carts)
+            foreach (MovingObject c in _carts)
             {
                 c.Move();
-                if(c.crashed())
-                {
+                if (c.Crashed)
                     return false;
-                }
             }
-            foreach(MovingObject c in _carts)
-            {
-                c.resetMove(); 
-            }
+            foreach (MovingObject c in _carts)
+                c.ResetMove();
             return true;
+        }
+
+        public void SwitchOnInput(int input)
+        {
+            var s = _switches[input];
+            s.GetType().GetMethod("SwitchLane").Invoke(s, null);
         }
 
         private ImmovableObject GetObject(char type, int row)
         {
             ImmovableObject immovableObject = null;
             switch (type)
-            {            
+            {
                 case '-':
                     immovableObject = new Flat();
                     break;
                 case 'S':
                     immovableObject = new StartingPoint();
-                    _startingPoints.Add(immovableObject);
+                    _startingPoints.Add(immovableObject as StartingPoint);
                     break;
                 case 'E':
                     immovableObject = new DoubleEntranceSwitch();
-                    _switches.Add(immovableObject);
+                    _switches.Add(immovableObject as Switch);
                     break;
                 case 'X':
                     immovableObject = new DoubleExitSwitch();
-                    _switches.Add(immovableObject);
+                    _switches.Add(immovableObject as Switch);
                     break;
                 case 'Y':
                     immovableObject = new Yard();
                     break;
                 case 'D':
-                    immovableObject = new Dock();
+                    immovableObject = new Dock(this);
+                    _dock = immovableObject as Dock;
+                    break;
+                case '.':
+                    immovableObject = new EndPoint();
                     break;
                 case ' ':
                     immovableObject = new Empty();
@@ -118,21 +134,13 @@ namespace Goudkoorts
                 for (int j = 0; j < layout[i].Count; j++)
                 {
                     if (i != 0 && layout[i - 1].Count > j && layout[i - 1][j] != null)
-                    {
                         layout[i][j].Up = layout[i - 1][j];
-                    }
                     if (i != layout.Count - 1 && layout[i + 1].Count > j && layout[i + 1][j] != null)
-                    {
                         layout[i][j].Down = layout[i + 1][j];
-                    }
                     if (j < layout[i].Count - 1)
-                    {
                         layout[i][j].Right = layout[i][j + 1];
-                    }
                     if (j > 0)
-                    {
                         layout[i][j].Left = layout[i][j - 1];
-                    }
                 }
 
             }
@@ -152,9 +160,9 @@ namespace Goudkoorts
                         else
                             Console.Write('-');
                     }
-                    else if(firstToRight is Yard)
+                    else if (firstToRight is Yard)
                         Console.Write('Y');
-                    else if(firstToRight is Empty)
+                    else if (firstToRight is Empty)
                     {
                         Console.Write(' ');
                     }
@@ -181,4 +189,4 @@ namespace Goudkoorts
             }
         }
     }
-}  
+}

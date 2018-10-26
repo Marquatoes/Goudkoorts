@@ -1,26 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Goudkoorts
+﻿namespace Goudkoorts
 {
     public class Yard : Track
     {
-       public Yard()
-       {
-            this.canBePlaced = true;
-       }
-        public override void SetMovingObject(MovingObject movingObject)
+        public Yard()
         {
-            if(this.inUseBy == null)
+            _CanBePlaced = true;
+        }
+        public override bool SetMovingObject(MovingObject movingObject)
+        {
+            if (inUseBy == null)
             {
-                this.inUseBy = movingObject;
+                inUseBy = movingObject;
+                return true;
             }
             else
             {
-                inUseBy.Move();
-                this.inUseBy = movingObject;
+                bool b = inUseBy.Move();
+                if(b)
+                    inUseBy = movingObject;
+                return b;
             }
         }
     }

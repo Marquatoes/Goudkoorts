@@ -50,6 +50,7 @@
     <Compile Include="Model\Boat.cs" />
     <Compile Include="Model\Cart.cs" />
     <Compile Include="Model\Corner.cs" />
+    <Compile Include="Model\EndPoint.cs" />
     <Compile Include="Model\Flat.cs" />
     <Compile Include="Model\Game.cs" />
     <Compile Include="Model\Parser.cs" />

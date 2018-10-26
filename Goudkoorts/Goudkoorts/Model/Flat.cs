@@ -1,31 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Goudkoorts
+﻿namespace Goudkoorts
 {
     public class Flat : Track
     {
         public Flat() : base()
         {
-            this.canBePlaced = true;
+            this._CanBePlaced = true;
         }
-        public override bool CanBePlaced()
-        { 
-            return this.canBePlaced;
-        }
-        public override void SetMovingObject(MovingObject movingObject)
+        public override bool CanBePlaced { get { return this._CanBePlaced; } }
+        public override bool SetMovingObject(MovingObject movingObject)
         {
-            if (this.inUseBy == null)
+            if (inUseBy == null)
             {
-                movingObject.currentPosition.setUsedBy(null);
-                setUsedBy(movingObject);
+                movingObject.CurrentPosition.SetUsedBy(null);
+                SetUsedBy(movingObject);
+                return true;
             }
             else
-            {
-                inUseBy.Move();
-            }
+                return inUseBy.Move();
         }
     }
 }

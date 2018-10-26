@@ -1,34 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Goudkoorts
+﻿namespace Goudkoorts
 {
     public abstract class Switch : Track
     {
-        protected ImmovableObject lane;
-        public Switch() : base()
-        {
-            
-        }
-        public override abstract void SetMovingObject(MovingObject movingObject);
-        public virtual void SwitchLane()
-        {
-            if(lane == this.Up)
-            {
-                lane = this.Down;
-            }
-            else
-            {
-                lane = this.Up;
-            }
-        }
-        public virtual void SetLaneDirection(ImmovableObject i)
-        {
-            this.lane = i;
-        }
+        protected ImmovableObject _lane;
+        public ImmovableObject Lane { get { return _lane; } set { _lane = value; } }
 
-        public ImmovableObject Lane { get { return this.lane; } }
+        public Switch() : base() { }
+
+        public override abstract bool SetMovingObject(MovingObject movingObject);
+
+        public virtual void SwitchLane() { }
+
+        public virtual void SetLaneDirection(ImmovableObject i) => Lane = i;
     }
 }

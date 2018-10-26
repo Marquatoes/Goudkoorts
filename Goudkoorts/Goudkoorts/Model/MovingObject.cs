@@ -7,25 +7,22 @@ namespace Goudkoorts
 {
     public abstract class MovingObject
     {
-        public ImmovableObject currentPosition { get; set; }
-        public ImmovableObject previousPosition { get; set; }
+        public ImmovableObject CurrentPosition { get; set; }
+        public ImmovableObject PreviousPosition { get; set; }
         protected bool _moved;
 
         protected MovingObject(ImmovableObject i)
         {
-            this.currentPosition = i;
-            this.previousPosition = null;
+            this.CurrentPosition = i;
+            this.PreviousPosition = null;
             this._moved = false;
         }
-        public abstract void Move();
+        public abstract bool Move();
 
-        internal void resetMove()
+        internal void ResetMove()
         {
             _moved = false;
         }
-        public virtual bool crashed()
-        {
-            return false;
-        }
+        public virtual bool Crashed { get; set; }
     }
 }

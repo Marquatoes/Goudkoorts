@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Goudkoorts
+﻿namespace Goudkoorts
 {
     public class Water : ImmovableObject
     {
-        public override bool CanBePlaced()
-        {
-            return canBePlaced;
-        }
+        public override bool CanBePlaced { get { return _CanBePlaced; } }
 
-        public override void SetMovingObject(MovingObject movingObject)
+        public override bool SetMovingObject(MovingObject movingObject)
         {
-            if(movingObject is Boat)
+            if (movingObject is Boat)
             {
                 this.inUseBy = movingObject;
+                return true;
             }
+            return false;
         }
     }
 }

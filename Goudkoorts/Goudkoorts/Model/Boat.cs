@@ -11,8 +11,8 @@ namespace Goudkoorts
         private int _cargo;
         public Boat(ImmovableObject i) : base(i)
         {
-            this.currentPosition = i;
-            this.previousPosition = null;
+            this.CurrentPosition = i;
+            this.PreviousPosition = null;
             _isDocked = false;
             _cargo = 0;
         }
@@ -21,10 +21,11 @@ namespace Goudkoorts
            if(_isDocked)          
                _cargo++;    
         }
-        public override void Move()
+        public override bool Move()
         {
-            currentPosition.Left.SetMovingObject(this);
-            currentPosition = currentPosition.Left;
+            CurrentPosition.Left.SetMovingObject(this);
+            CurrentPosition = CurrentPosition.Left;
+            return true;
         }
     }
 }

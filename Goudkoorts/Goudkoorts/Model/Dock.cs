@@ -1,35 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Goudkoorts
+﻿namespace Goudkoorts
 {
     public class Dock : Track
     {
-        private Boat boat;
-        public Dock()
+        private readonly Path _path;
+        public bool BoatIsDocked { get; set; }
+        public Dock(Path p)
         {
-            boat = null;
+            _path = p;
         }
-        public override bool CanBePlaced()
+        public override bool CanBePlaced { get { return true; } }
+        public override bool SetMovingObject(MovingObject movingObject)
         {
-            return true;
-        }
-        public override void SetMovingObject(MovingObject movingObject)
-        {
-            if(movingObject is Cart && boat != null)
-            {
-                Cart cart = (Cart)movingObject;
+            if (movingObject is Cart cart && BoatIsDocked)
                 if (cart.Unload())
-                {
-                    boat.AddCargo();
-                }
+                    _path.AddScore();
+
+            if (inUseBy == null)
+            {
+                movingObject.CurrentPosition.SetUsedBy(null);
+                SetUsedBy(movingObject);
+                return true;
             }
-        }
-        public void addBoat(Boat boat)
-        {
-            this.boat = boat;
+            else
+                return inUseBy.Move();
         }
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Goudkoorts.Controller
+﻿namespace Goudkoorts.Controller
 {
     public class GameController
     {
@@ -18,15 +12,16 @@ namespace Goudkoorts.Controller
             _observable.Event += _observer.Update;
         }
 
-        public ImmovableObject GetPathFirst()
-        {
-            return _observable.GetPathFirst();
-        }
+        public ImmovableObject GetPathFirst() { return _observable.GetPathFirst(); }
 
-        internal bool BoatIsAtDock
-        {
-            get { return _observable.BoatIsAtDock; }
-            set { _observable.BoatIsAtDock = value; }
-        }
+        internal bool BoatIsAtDock { get { return _observable.BoatIsAtDock; } }
+
+        internal void SwitchOnInput(int input) { _observable.SwitchOnInput(input); }
+
+        internal int GetScore() { return _observable.GetScore(); }
+
+        internal int GetBoatLocation() { return _observable.BoatLocation; }
+
+        internal void DebugAddScore() { _observable.DebugAddScore(); }
     }
 }

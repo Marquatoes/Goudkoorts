@@ -8,30 +8,28 @@ namespace Goudkoorts
     public abstract class ImmovableObject
     {
         protected MovingObject inUseBy;
-        protected bool canBePlaced;
+        protected bool _CanBePlaced;
         public ImmovableObject Up { get; set; }
         public ImmovableObject Down { get; set; }
         public ImmovableObject Left { get; set; }
         public ImmovableObject Right { get; set; }
 
-        public ImmovableObject()
-        {
-            
-        }
+        public ImmovableObject() { }
+
         public MovingObject InUseBy()
         {
             return this.inUseBy;
         }
-        public void setUsedBy(MovingObject m)
+        public void SetUsedBy(MovingObject m)
         {
             this.inUseBy = m;
         }
-        public virtual void setCanBePlaced(bool canBePlaced)
+        public virtual void SetCanBePlaced(bool canBePlaced)
         {
-            this.canBePlaced = canBePlaced;
+            this._CanBePlaced = canBePlaced;
         }
 
-        public virtual void SetMovingObject(MovingObject movingObject) { }
-        public virtual bool CanBePlaced() { return canBePlaced; }
+        public virtual bool SetMovingObject(MovingObject movingObject) { return true; }
+        public virtual bool CanBePlaced { get { return _CanBePlaced; }set { _CanBePlaced = value; } }
     }
 }

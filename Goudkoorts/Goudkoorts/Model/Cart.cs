@@ -1,74 +1,80 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Goudkoorts
+﻿namespace Goudkoorts
 {
-    
+
     public class Cart : MovingObject
     {
-        private bool _isFull;
-        private bool _crashed;
+        public override bool Crashed { get; set; }
         public Cart(ImmovableObject i) : base(i)
         {
-            this.currentPosition = i;
-            this.previousPosition = null;
-            _isFull = true;
+            CurrentPosition = i;
+            PreviousPosition = null;
+            IsFull = true;
         }
 
-        public bool IsFull
-        {
-            get { return _isFull; }
-        }
+        public bool IsFull { get; private set; }
 
-        public override void Move()
+        public override bool Move()
         {
             if (_moved)
             {
-                _crashed = true;
-                return;
+                Crashed = true;
+                return true;
             }
 
-            if (currentPosition.Down.CanBePlaced() && currentPosition.Down != previousPosition)
+            if (CurrentPosition.Down != null
+                && CurrentPosition.Down.CanBePlaced
+                && CurrentPosition.Down != PreviousPosition
+                && !(CurrentPosition is DoubleEntranceSwitch))
             {
-                currentPosition.Down.SetMovingObject(this);
-                currentPosition = currentPosition.Down;
-                previousPosition = currentPosition;
+                if (CurrentPosition.Down.SetMovingObject(this))
+                {
+                    PreviousPosition = CurrentPosition;
+                    CurrentPosition = CurrentPosition.Down;
+                }
             }
-            else if (currentPosition.Up.CanBePlaced() && currentPosition.Up != previousPosition)
+            else if (CurrentPosition.Up != null
+                && CurrentPosition.Up.CanBePlaced
+                && CurrentPosition.Up != PreviousPosition
+                && !(CurrentPosition is DoubleEntranceSwitch))
             {
-                currentPosition.Up.SetMovingObject(this);
-                currentPosition = currentPosition.Up;
-                previousPosition = currentPosition;
+                if (CurrentPosition.Up.SetMovingObject(this))
+                {
+                    PreviousPosition = CurrentPosition;
+                    CurrentPosition = CurrentPosition.Up;
+                }
             }
-            else if (currentPosition.Right.CanBePlaced() && currentPosition.Right != previousPosition)
+            else if (CurrentPosition.Right != null
+                && CurrentPosition.Right.CanBePlaced
+                && CurrentPosition.Right != PreviousPosition
+                && !(CurrentPosition is DoubleExitSwitch))
             {
-                currentPosition.Right.SetMovingObject(this);
-                currentPosition = currentPosition.Right;
-                previousPosition = currentPosition;
+                if (CurrentPosition.Right.SetMovingObject(this))
+                {
+                    PreviousPosition = CurrentPosition;
+                    CurrentPosition = CurrentPosition.Right;
+                }
             }
-            else if (currentPosition.Down.CanBePlaced() && currentPosition.Left != previousPosition)
+            else if (CurrentPosition.Left != null
+                && CurrentPosition.Left.CanBePlaced
+                && CurrentPosition.Left != PreviousPosition
+                && !(CurrentPosition is DoubleExitSwitch))
             {
-                currentPosition.Left.SetMovingObject(this);
-                currentPosition = currentPosition.Left;
-                previousPosition = currentPosition;
+                if (CurrentPosition.Left.SetMovingObject(this))
+                {
+                    PreviousPosition = CurrentPosition;
+                    CurrentPosition = CurrentPosition.Left;
+                }
             }
             _moved = true;
+            return true;
         }
 
         public bool Unload()
-        {    
-            if(_isFull == false)
-            {
-                return false;
-            }
-            _isFull = false;
-            return true;
-        }
-        public override bool crashed()
         {
-            return this._crashed;
+            if (IsFull == false)
+                return false;
+            IsFull = false;
+            return true;
         }
     }
 }

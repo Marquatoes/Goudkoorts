@@ -1,54 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Goudkoorts
+﻿namespace Goudkoorts
 {
     public class DoubleExitSwitch : Switch
     {
-        public DoubleExitSwitch()
-        {
+        public DoubleExitSwitch() { }
 
-        }
         public override void SwitchLane()
         {
-            if (lane == this.Up)
+            if (_lane == Up)
             {
-                lane.setCanBePlaced(false);
-                lane = this.Down;   
+                _lane.CanBePlaced = false;
+                _lane = Down;
             }
             else
             {
-                lane.setCanBePlaced(false);
-                lane = this.Up;
+                _lane.CanBePlaced = false;
+                _lane = Up;
             }
-            lane.setCanBePlaced(true);
+            _lane.CanBePlaced = true;
         }
 
-        public override void SetMovingObject(MovingObject movingObject)
+        public override bool SetMovingObject(MovingObject movingObject)
         {
-            if (this.inUseBy == null)
+            if (inUseBy == null)
             {
-                movingObject.currentPosition.setUsedBy(null);
-                setUsedBy(movingObject);
+                movingObject.CurrentPosition.SetUsedBy(null);
+                SetUsedBy(movingObject);
+                return true;
             }
             else if (inUseBy != null)
-            {
-                inUseBy.Move();
-            }
+                return inUseBy.Move();
+            return false;
         }
         public override void SetLaneDirection(ImmovableObject i)
         {
             base.SetLaneDirection(i);
-            if(lane == this.Up)
-            {
-                this.Down.setCanBePlaced(false);
-            }
+            if (_lane == Up)
+                Down.CanBePlaced = false;
             else
-            {
-                this.Up.setCanBePlaced(false);
-            }
+                Up.CanBePlaced = false;
         }
     }
 }
