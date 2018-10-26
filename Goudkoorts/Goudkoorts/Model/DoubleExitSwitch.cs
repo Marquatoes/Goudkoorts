@@ -28,7 +28,15 @@
                 return true;
             }
             else if (inUseBy != null)
-                return inUseBy.Move();
+            {
+                if (!inUseBy.Move())
+                {
+                    movingObject.Crashed = true;
+                }
+                movingObject.CurrentPosition.SetUsedBy(null);
+                SetUsedBy(movingObject);
+                return true;
+            }
             return false;
         }
         public override void SetLaneDirection(ImmovableObject i)

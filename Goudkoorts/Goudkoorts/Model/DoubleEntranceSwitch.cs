@@ -24,8 +24,18 @@
                 SetUsedBy(movingObject);
                 return true;
             }
-            else if (inUseBy != null)
-                return inUseBy.Move();
+            else if (inUseBy != null && movingObject.CurrentPosition == _lane)
+            {
+                if (!inUseBy.Move())
+                {
+                    movingObject.Crashed = true;
+                    return false;
+                }
+                movingObject.CurrentPosition.SetUsedBy(null);
+                SetUsedBy(movingObject);
+                return true;
+
+            }
             return false;
         }
     }

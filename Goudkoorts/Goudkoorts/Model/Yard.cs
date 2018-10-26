@@ -24,7 +24,13 @@
                     return true;
                 }
                 else
-                    return false;
+                {
+                    if (!inUseBy.Move())
+                    {
+                        movingObject.Crashed = true;
+                    }
+                    return true;
+                }
             }
         }
     }

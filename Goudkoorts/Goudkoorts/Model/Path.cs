@@ -79,7 +79,13 @@ namespace Goudkoorts
                     return false;
             }
             foreach (MovingObject c in _carts)
+            {
                 c.ResetMove();
+                if (c.Crashed)
+                {
+                    return false;
+                }
+            }
             return true;
         }
 

@@ -17,7 +17,7 @@
         {
             if (_moved)
             {
-                Crashed = true;
+                return false;
             }
 
             if(CurrentPosition is Yard && !force)

@@ -16,7 +16,15 @@
                 return true;
             }
             else
-                return inUseBy.Move();
+            {
+                if (!inUseBy.Move())
+                {
+                    inUseBy.Crashed = true;
+                }
+                movingObject.CurrentPosition.SetUsedBy(null);
+                SetUsedBy(movingObject);
+                return true;
+            }
         }
     }
 }

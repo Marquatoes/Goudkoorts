@@ -47,9 +47,7 @@
     <Compile Include="Model\DoubleEntranceSwitch.cs" />
     <Compile Include="Model\DoubleExitSwitch.cs" />
     <Compile Include="Model\Empty.cs" />
-    <Compile Include="Model\Boat.cs" />
     <Compile Include="Model\Cart.cs" />
-    <Compile Include="Model\Corner.cs" />
     <Compile Include="Model\EndPoint.cs" />
     <Compile Include="Model\Flat.cs" />
     <Compile Include="Model\Game.cs" />
@@ -58,7 +56,6 @@
     <Compile Include="View\GameView.cs" />
     <Compile Include="Model\MovingObject.cs" />
     <Compile Include="Model\Path.cs" />
-    <Compile Include="Model\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Dock.cs" />
@@ -66,7 +63,6 @@
     <Compile Include="Model\Switch.cs" />
     <Compile Include="Model\ImmovableObject.cs" />
     <Compile Include="Model\Track.cs" />
-    <Compile Include="Model\Water.cs" />
     <Compile Include="Model\Yard.cs" />
   </ItemGroup>
   <ItemGroup>
