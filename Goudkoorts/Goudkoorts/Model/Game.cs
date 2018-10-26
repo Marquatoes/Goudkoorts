@@ -18,7 +18,7 @@ namespace Goudkoorts
             _path.SetPath(Parser.GetLevel(1));
             _path.Score = 0;
             _path.BoatLocation = -1;
-            Round(500);
+            Round(1000);
         }
 
         private void Round(int roundDurationMs)

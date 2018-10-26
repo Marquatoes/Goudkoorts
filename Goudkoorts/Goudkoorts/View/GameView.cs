@@ -28,8 +28,8 @@ namespace Goudkoorts
                 if (input > 0 && input < 6)
                     _gameController.SwitchOnInput(--input);
             }
-            else if (inputString == "a")
-                _gameController.DebugAddScore();
+            //else if (inputString == "a")
+                //_gameController.DebugAddScore();
             StartListening();
         }
 

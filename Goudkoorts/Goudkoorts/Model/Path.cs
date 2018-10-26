@@ -62,8 +62,7 @@ namespace Goudkoorts
 
         internal void PlaceCart()
         {
-            //int placement = RandomNumber.Next(_startingPoints.Count);
-            int placement = 2;
+            int placement = RandomNumber.Next(_startingPoints.Count);
             Cart cart = new Cart(_startingPoints[placement]);
             _startingPoints[placement].SetUsedBy(cart);
             _carts.Add(cart);
