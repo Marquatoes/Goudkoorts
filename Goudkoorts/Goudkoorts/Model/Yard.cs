@@ -10,15 +10,21 @@
         {
             if (inUseBy == null)
             {
-                inUseBy = movingObject;
+                movingObject.CurrentPosition.SetUsedBy(null);
+                SetUsedBy(movingObject);
                 return true;
             }
             else
             {
-                bool b = inUseBy.Move();
-                if(b)
-                    inUseBy = movingObject;
-                return b;
+                bool b = inUseBy.Move(true);
+                if (b)
+                {
+                    movingObject.CurrentPosition.SetUsedBy(null);
+                    SetUsedBy(movingObject);
+                    return true;
+                }
+                else
+                    return false;
             }
         }
     }

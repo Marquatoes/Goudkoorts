@@ -54,6 +54,7 @@
     <Compile Include="Model\Flat.cs" />
     <Compile Include="Model\Game.cs" />
     <Compile Include="Model\Parser.cs" />
+    <Compile Include="Model\RandomNumber.cs" />
     <Compile Include="View\GameView.cs" />
     <Compile Include="Model\MovingObject.cs" />
     <Compile Include="Model\Path.cs" />

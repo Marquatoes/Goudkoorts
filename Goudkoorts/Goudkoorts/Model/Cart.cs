@@ -13,12 +13,16 @@
 
         public bool IsFull { get; private set; }
 
-        public override bool Move()
+        public override bool Move(bool force = false)
         {
             if (_moved)
             {
                 Crashed = true;
-                return true;
+            }
+
+            if(CurrentPosition is Yard && !force)
+            {
+                return false;
             }
 
             if (CurrentPosition.Down != null
@@ -30,6 +34,9 @@
                 {
                     PreviousPosition = CurrentPosition;
                     CurrentPosition = CurrentPosition.Down;
+
+                    _moved = true;
+                    return true;
                 }
             }
             else if (CurrentPosition.Up != null
@@ -41,6 +48,9 @@
                 {
                     PreviousPosition = CurrentPosition;
                     CurrentPosition = CurrentPosition.Up;
+                    
+                    _moved = true;
+                    return true;
                 }
             }
             else if (CurrentPosition.Right != null
@@ -52,6 +62,9 @@
                 {
                     PreviousPosition = CurrentPosition;
                     CurrentPosition = CurrentPosition.Right;
+
+                    _moved = true;
+                    return true;
                 }
             }
             else if (CurrentPosition.Left != null
@@ -63,10 +76,13 @@
                 {
                     PreviousPosition = CurrentPosition;
                     CurrentPosition = CurrentPosition.Left;
+
+                    _moved = true;
+                    return true;
                 }
             }
             _moved = true;
-            return true;
+            return false;
         }
 
         public bool Unload()

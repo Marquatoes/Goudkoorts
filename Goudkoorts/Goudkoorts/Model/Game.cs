@@ -6,14 +6,6 @@ namespace Goudkoorts
     {
         private Path _path;
 
-        public Player Player
-        {
-            get => default(Player);
-            set
-            {
-            }
-        }
-
         public bool BoatIsAtDock { get { return false; } }
         public int BoatLocation { get { return _path.BoatLocation; } }
 
@@ -31,27 +23,33 @@ namespace Goudkoorts
 
         private void Round(int roundDurationMs)
         {
-            Random r = new Random();
-            if (r.Next(0, 4) == 1)
-                if(_path.DebugCartAmount < 1)
-                    _path.PlaceCart();
-            if (!_path.MoveAllCarts())
-            {
-                //Show GameOver Screen
-            }
+            if (RandomNumber.Next(4) == 0)
+                _path.PlaceCart();
+
+            bool crashed = !_path.MoveAllCarts();
 
             if (!_path.BoatIsDocked)
             {
                 _path.BoatLocation++;
-                if(BoatLocation == 14)
+                if (BoatLocation == 14)
                 {
                     _path.DockBoat();
                 }
             }
 
             Notify();
-            System.Threading.Thread.Sleep(roundDurationMs);
-            Round(roundDurationMs);
+            if (crashed)
+                EndGame();
+            else
+            {
+                System.Threading.Thread.Sleep(roundDurationMs);
+                Round(roundDurationMs);
+            }
+        }
+
+        private void EndGame()
+        {
+            Console.WriteLine("Finishing");
         }
 
         internal void DebugAddScore()

@@ -21,7 +21,7 @@ namespace Goudkoorts
            if(_isDocked)          
                _cargo++;    
         }
-        public override bool Move()
+        public override bool Move(bool force)
         {
             CurrentPosition.Left.SetMovingObject(this);
             CurrentPosition = CurrentPosition.Left;

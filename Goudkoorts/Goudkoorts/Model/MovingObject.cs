@@ -17,7 +17,7 @@ namespace Goudkoorts
             this.PreviousPosition = null;
             this._moved = false;
         }
-        public abstract bool Move();
+        public abstract bool Move(bool force = false);
 
         internal void ResetMove()
         {

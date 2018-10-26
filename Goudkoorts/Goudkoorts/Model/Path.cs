@@ -35,7 +35,7 @@ namespace Goudkoorts
         internal void AddScore()
         {
             Score += 100;
-            if (BoatLocation <= 14)
+            if (BoatLocation >= 14)
             {
                 BoatLocation++;
                 if (BoatLocation == 24)
@@ -62,8 +62,8 @@ namespace Goudkoorts
 
         internal void PlaceCart()
         {
-            Random random = new Random();
-            int placement = random.Next(0, _startingPoints.Count);
+            //int placement = RandomNumber.Next(_startingPoints.Count);
+            int placement = 2;
             Cart cart = new Cart(_startingPoints[placement]);
             _startingPoints[placement].SetUsedBy(cart);
             _carts.Add(cart);

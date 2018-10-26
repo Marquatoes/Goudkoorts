@@ -22,7 +22,7 @@
                 return true;
             }
             else
-                return inUseBy.Move();
+                return false;
         }
     }
 }
