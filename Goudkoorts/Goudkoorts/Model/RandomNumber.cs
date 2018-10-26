@@ -2,7 +2,7 @@
 
 namespace Goudkoorts
 {
-    public class RandomNumber
+    public static class RandomNumber
     {
         private static readonly Random Global = new Random();
         [ThreadStatic] private static Random _local;

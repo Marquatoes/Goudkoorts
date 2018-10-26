@@ -1,8 +1,8 @@
 ﻿namespace Goudkoorts
 {
-    public class Flat : Track
+    public class StandardTrack : Track
     {
-        public Flat() : base()
+        public StandardTrack() : base()
         {
             this._CanBePlaced = true;
         }

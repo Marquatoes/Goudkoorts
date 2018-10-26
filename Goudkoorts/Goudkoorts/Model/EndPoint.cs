@@ -1,6 +1,6 @@
 ﻿namespace Goudkoorts.Model
 {
-    public class EndPoint : Flat
+    public class EndPoint : StandardTrack
     {
         public override bool SetMovingObject(MovingObject movingObject)
         {
