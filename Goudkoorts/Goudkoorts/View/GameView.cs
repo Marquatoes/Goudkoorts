@@ -80,7 +80,7 @@ namespace Goudkoorts
                             Console.ForegroundColor = ConsoleColor.DarkGreen;
                         }
 
-                        if (cell is Flat || cell is Yard)
+                        if (cell is StandardTrack || cell is Yard)
                         {
                             if (!IsNullOrEmpty(cell.Left) && !IsNullOrEmpty(cell.Right) && IsNullOrEmpty(cell.Up) && IsNullOrEmpty(cell.Down)
                                 || !IsNullOrEmpty(cell.Left) && IsNullOrEmpty(cell.Right) && IsNullOrEmpty(cell.Up) && IsNullOrEmpty(cell.Down)

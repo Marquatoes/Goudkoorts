@@ -101,7 +101,7 @@ namespace Goudkoorts
             switch (type)
             {
                 case '-':
-                    immovableObject = new Flat();
+                    immovableObject = new StandardTrack();
                     break;
                 case 'S':
                     immovableObject = new StartingPoint();
@@ -158,7 +158,7 @@ namespace Goudkoorts
             {
                 for (ImmovableObject firstToRight = first; firstToRight != null; firstToRight = firstToRight.Right)
                 {
-                    if (firstToRight is Flat)
+                    if (firstToRight is StandardTrack)
                     {
                         if (firstToRight.InUseBy() is Cart)
                             Console.Write('C');

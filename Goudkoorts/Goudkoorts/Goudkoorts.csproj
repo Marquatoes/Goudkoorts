@@ -49,7 +49,7 @@
     <Compile Include="Model\Empty.cs" />
     <Compile Include="Model\Cart.cs" />
     <Compile Include="Model\EndPoint.cs" />
-    <Compile Include="Model\Flat.cs" />
+    <Compile Include="Model\StandardTrack.cs" />
     <Compile Include="Model\Game.cs" />
     <Compile Include="Model\Parser.cs" />
     <Compile Include="Model\RandomNumber.cs" />
@@ -67,7 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Model\ClassDiagram1.cd" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Maps\level1.txt" />
